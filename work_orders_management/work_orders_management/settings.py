@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken', # Token Authentication
     'vehicles',
     'workorders',
+    'authentication',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,7 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# Django Rest Framework Configuration
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
+    
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
