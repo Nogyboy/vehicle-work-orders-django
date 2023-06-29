@@ -48,19 +48,19 @@ class Vehicle(models.Model):
         if not self.image:
             image_url, image_name = get_unsplash_image(self)
             if image_url and image_name:
-                # Descargar la imagen desde la URL
+                # Download the image
                 response = requests.get(image_url)
                 if response.status_code == 200:
-                    # Obtener los datos de la imagen
+                    # Get the image data
                     image_data = response.content
 
-                    # Crear un nombre de archivo único utilizando el campo "plate" y la extensión de archivo
+                    # Get the image file name
                     file_name = f"{self.plate}.jpg"
 
-                    # Crear un objeto File a partir de los datos de la imagen
+                    # Create a Django File object so it can be saved to ImageField
                     file_object = File(BytesIO(image_data), name=file_name)
 
-                    # Asignar el objeto File al campo "image" del modelo
+                    # Save the image to the model
                     self.image.save(file_name, file_object)
 
         super().save(*args, **kwargs)
