@@ -18,7 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls.conf import include
 
+# Admin, static and media URLs
 urlpatterns = [
     path('admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Apps URLs
+urlpatterns += [
+    path('auth/', include('authentication.urls')),
+    path('vehicles/', include('vehicles.urls')),
+]
