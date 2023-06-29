@@ -29,4 +29,5 @@ urlpatterns = [
 urlpatterns += [
     path('auth/', include('authentication.urls')),
     path('vehicles/', include('vehicles.urls')),
+    path('work-orders/', include('workorders.urls')),
 ]
