@@ -28,4 +28,5 @@ urlpatterns = [
 # Apps URLs
 urlpatterns += [
     path('auth/', include('authentication.urls')),
+    path('vehicles/', include('vehicles.urls')),
 ]
